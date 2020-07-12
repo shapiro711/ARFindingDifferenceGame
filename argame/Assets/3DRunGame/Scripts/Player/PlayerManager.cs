@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PlayerManager : MonoBehaviour
     public GameObject startingText;
 
     public static int numberOfCoins;
+    public Text coinsText;
 
     void Start()
     {
@@ -31,6 +33,8 @@ public class PlayerManager : MonoBehaviour
             Time.timeScale = 0;
             gameOverPanel.SetActive(true);
         }
+
+        coinsText.text = "Coins" + numberOfCoins;
 
         if (Input.GetKeyDown(KeyCode.KeypadEnter))
         {
