@@ -645,6 +645,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b8ee15401db0634fbfb059cb0369780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverPanel: {fileID: 505356685}
+  startingText: {fileID: 1519067877}
+  coinsText: {fileID: 1041064380}
   forwardSpeed: 10
   maxSpeed: 50
   laneDistance: 3

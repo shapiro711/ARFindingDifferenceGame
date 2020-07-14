@@ -1,11 +1,44 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private static PlayerController instance;
+    public static PlayerController Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                var obj = FindObjectOfType<PlayerController>();
+                if (obj != null)
+                {
+                    instance = obj;
+                }
+                else
+                {
+                    var newObj = new GameObject().AddComponent<PlayerController>();
+                    instance = newObj;
+                }
+            }
+            return instance;
+        }
+    }
+
+    public static bool gameOver;
+    public GameObject gameOverPanel;
+
+    public static bool isGameStarted;
+    public GameObject startingText;
+
+    public static int numberOfCoins;
+    public Text coinsText;
+
+
+
     private CharacterController controller;
     private Vector3 direction;
     public float forwardSpeed;
@@ -22,15 +55,50 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     private bool isSliding = false;
 
+
+
+
+    private void Awake()
+    {
+        var objs = FindObjectsOfType<PlayerController>();
+
+        if (objs.Length != 1)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(gameObject);
+
+    }
+
+
     void Start()
     {
+        gameOver = false;
+        Time.timeScale = 1;
+        isGameStarted = false;
+        numberOfCoins = 0;
         controller = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!PlayerManager.isGameStarted)
+        if (gameOver)
+        {
+            Time.timeScale = 0;
+            gameOverPanel.SetActive(true);
+        }
+
+        coinsText.text = "Coins" + numberOfCoins;
+
+        if (SwipeManager1.tap)
+        {
+            isGameStarted = true;
+            Destroy(startingText);
+        }
+
+        if (!isGameStarted)
             return;
 
         animator.SetBool("isGameStarted", true);
@@ -100,7 +168,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!PlayerManager.isGameStarted)
+        if (!isGameStarted)
             return;
         controller.Move(direction * Time.fixedDeltaTime);
     }
@@ -114,7 +182,7 @@ public class PlayerController : MonoBehaviour
     {
         if (hit.transform.tag == "Obstacle")
         {
-            PlayerManager.gameOver = true;
+            gameOver = true;
         }
     }
 
