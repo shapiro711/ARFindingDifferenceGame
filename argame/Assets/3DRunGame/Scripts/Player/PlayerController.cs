@@ -29,36 +29,64 @@ public class PlayerController : MonoBehaviour
     }
 
     public static bool gameOver;
-    public GameObject gameOverPanel;
+    [SerializeField]
+    private GameObject gameOverPanel;
 
     public static bool isGameStarted;
-    public GameObject startingText;
+    [SerializeField]
+    private GameObject startingText;
 
     public static int numberOfCoins;
-    public Text coinsText;
+    [SerializeField]
+    private Text coinsText;
 
 
 
     private CharacterController controller;
     private Vector3 direction;
-    public float forwardSpeed;
-    public float maxSpeed;
 
-    private int desiredLane = 1; // 0 왼쪽 1 가운데 2 오른쪽
-    public float laneDistance = 4; // 레인 사이의 거리
+    [SerializeField]
+    private float forwardSpeed;
+    public float ForwardSpeed
+    {
+        get { return forwardSpeed; }
+        set { forwardSpeed = value; }
+    }
+    [SerializeField]
+    private float maxSpeed;
+    public float MaxSpeed
+    {
+        get { return MaxSpeed; }
+        set { maxSpeed = value; }
+    }
+
+    public int desiredLane { get; set; } = 1; // 0 왼쪽 1 가운데 2 오른쪽
+    public float laneDistance { get; set; } = 3; // 레인 사이의 거리
 
     private bool isGround;
 
-    public float jumpForce;
-    public float Gravity = -20;
+    [SerializeField]
+    private float jumpForce;
+    public float JumpForce
+    {
+        get { return jumpForce; }
+        set { jumpForce = value; }
+    }
+    [SerializeField]
+    private float gravity;
+    public float Gravity
+    {
+        get { return gravity; }
+        set { gravity = value; }
+    }
 
     public Animator animator;
-    private bool isSliding = false;
+    public bool isSliding { get; set; } = false;
 
 
 
 
-    private void Awake()
+    void Awake()
     {
         var objs = FindObjectsOfType<PlayerController>();
 
@@ -67,7 +95,7 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        DontDestroyOnLoad(gameObject);
+       // DontDestroyOnLoad(gameObject);
 
     }
 
@@ -87,7 +115,8 @@ public class PlayerController : MonoBehaviour
         if (gameOver)
         {
             Time.timeScale = 0;
-            gameOverPanel.SetActive(true);
+            if(gameObject!= null)
+                gameOverPanel.SetActive(true);
         }
 
         coinsText.text = "Coins" + numberOfCoins;

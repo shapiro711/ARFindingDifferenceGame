@@ -5,13 +5,16 @@ using UnityEngine;
 public class TileManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject[] tilePrefabs;
-    public float zSpawn = 0;
-    public float titleLength = 30;
-    public int numberOfTiles = 5;
+
+    [SerializeField]
+    private GameObject[] tilePrefabs;
+    public float zSpawn { get; set; } = 0;
+    public float titleLength { get; set;} = 30;
+    public int numberOfTiles { get; set;} = 5;
     private List<GameObject> activeTiles = new List<GameObject>();
 
-    public Transform playerTransform;
+    [SerializeField]
+    private Transform playerTransform;
 
 
     void Start()
