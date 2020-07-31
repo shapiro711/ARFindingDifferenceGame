@@ -22,6 +22,7 @@ public class Astronaut : MonoBehaviour
         {
             if (i % 2 == 1)
                 Instantiate(prefab, new Vector3(transform.position.x + 0.05f * i, transform.position.y, transform.position.z), Quaternion.identity, GameObject.Find("Anchor_Plane").transform);
+                
             else
                 Instantiate(prefab, new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.05f * i), Quaternion.identity, GameObject.Find("Anchor_Plane").transform);
 
