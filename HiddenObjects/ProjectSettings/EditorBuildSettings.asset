@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
+    path: Assets/AR3dObject/Scene/New Scene.unity
+    guid: af4dfea6cbe6a2b46a53ee3807ffb160
+  - enabled: 0
     path: Assets/SamplesResources/Scenes/0-Splash.unity
     guid: 7238041e8d31f4d439b8851a5d4bb6fa
   - enabled: 0
