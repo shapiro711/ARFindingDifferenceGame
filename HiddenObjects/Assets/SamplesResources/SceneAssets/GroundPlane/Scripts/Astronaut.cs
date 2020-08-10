@@ -24,6 +24,24 @@ public class Astronaut : MonoBehaviour
 
     private void Start()
     {
+        for (int i = 0; i < 100; i++)
+
+
+        {
+            Vector3 pos = new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(2.0f, 2.5f), Random.Range(-1.0f, 1.0f));
+            Color color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+            GameObject _obj = Instantiate(prefab, pos, Quaternion.identity, GameObject.Find("Anchor_Plane").transform);
+            _obj.GetComponent<MeshRenderer>().material.color = color;
+            BoxCol = _obj.GetComponent<BoxCollider>();
+            BoxCol.enabled = true;
+
+
+            CubeList.Add(_obj);
+
+        }
+        CubeList[1].gameObject.layer = LayerMask.NameToLayer("Target");
+        CubeList[2].gameObject.layer = LayerMask.NameToLayer("Target");
+        CubeList[3].gameObject.layer = LayerMask.NameToLayer("Target");
 
     }
 
@@ -47,7 +65,7 @@ public class Astronaut : MonoBehaviour
         BoxCol = Target_obj3.GetComponent<BoxCollider>();
         BoxCol.enabled = true;*/
 
-        for (int i = 0; i < TextResult; i++)
+       /* for (int i = 0; i < TextResult; i++)
 
 
         {
@@ -64,7 +82,7 @@ public class Astronaut : MonoBehaviour
         }
         CubeList[1].gameObject.layer = LayerMask.NameToLayer("Target");
         CubeList[2].gameObject.layer = LayerMask.NameToLayer("Target");
-        CubeList[3].gameObject.layer = LayerMask.NameToLayer("Target");
+        CubeList[3].gameObject.layer = LayerMask.NameToLayer("Target");*/
     }
 
     private void Update()
@@ -77,6 +95,8 @@ public class Astronaut : MonoBehaviour
        //pos = this.gameObject.transform.position;
        //text.text = "x :" + pos.x.ToString() + "y :" + pos.y.ToString() + "z :" + pos.z.ToString();
     }
+
+
 
 
 }
