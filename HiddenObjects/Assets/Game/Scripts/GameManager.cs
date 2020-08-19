@@ -69,7 +69,7 @@ namespace Pump.HiddenObjects
 
             this.uiControl = UIControl.Instance;
 
-            this.State = GameState.Title;
+            this.State = GameState.Play;
         }
 
         private void OnApplicationPause(bool value)
