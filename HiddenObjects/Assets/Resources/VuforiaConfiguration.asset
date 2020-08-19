@@ -16,12 +16,12 @@ MonoBehaviour:
     vuforiaLicenseKey: 
     ufoLicenseKey: QWZJYjRLMy8vLy8vQUFBQUtBT3JaS0o3WmttU3A5eFlpczJMNmFsd3hMQlBNMjlUZE4wRW5wUW84YTJkY2U1WE44b3F0MkhXckpvUmNuelJpNlZST2dtb3JIZUZzR3g3azVrZ0k0MFZJNVdQKzkzNkFYUVBON2JqUDF3WUNMcHh4OFRmTVZQaGQzWHNqbjZDeVhCYjRRbGMzcklMVGRvRmk3WHllM2pWaFZEc2FPc1c5OFZJWlFSN1dEbUwwZ0ErRXFobzFrWDJoQ3FURlZoU1V0V1dtL01uSFlKYXFZbGQ3b2FuWmw3Q3BYbnY4am5KWEZRV1I1Qi9qNVlEOEIxRG1rNWxENy9CNE8xc003eEozU2tCUXRLRGJZR0VtYzNKUGxTUzlRNlhSLzJTZi83V0Y0WkNBYnR5a3VjZWY0RHdiZFhPVFRsb2NHSnBielNERHFOay9HbktJbkZnUHNjYjRrZnJZeFAyeVhvTDU1dFBOeWRSdlA4ZTY1cnk=
     delayedInitialization: 0
-    cameraDeviceModeSetting: -1
+    cameraDeviceModeSetting: -3
     maxSimultaneousImageTargets: 1
     maxSimultaneousObjectTargets: 1
     virtualSceneScaleFactor: 1
     useDelayedLoadingObjectTargets: 0
-    modelTargetRecoWhileExtendedTracked: 1
+    modelTargetRecoWhileExtendedTracked: 0
     version: 9.3.3
     eulaAcceptedVersions: '{"Values":["0.0","9.3","9.2"]}'
     modelTargetMode: 0
