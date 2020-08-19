@@ -1,9 +1,9 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SelectManaer : MonoBehaviour, IListener
+public class SelectManaer : MonoBehaviour
 {
     [SerializeField] private Text Correct_Text;
     [SerializeField] private Image Heart1;
@@ -64,7 +64,7 @@ public class SelectManaer : MonoBehaviour, IListener
             }
         }*/
 
-        if (Input.touchCount != 0)
+      /*  if (Input.touchCount != 0)
 
         {
             Vector2 pos = Input.GetTouch(0).position;
@@ -105,7 +105,7 @@ public class SelectManaer : MonoBehaviour, IListener
 
             }*/
 
-        }
+/*        }
     
 
 
@@ -135,7 +135,7 @@ public class SelectManaer : MonoBehaviour, IListener
 
 
 
-    }
+    }*/
 
 
 
@@ -157,7 +157,7 @@ public class SelectManaer : MonoBehaviour, IListener
 
     }*/
 
-    public void OnEvent(EVENT_TYPE Event_Type, Component Sender, object Param = null)
+  /*  public void OnEvent(EVENT_TYPE Event_Type, Component Sender, object Param = null)
     {
         //Detect event type
         switch (Event_Type)
@@ -185,4 +185,4 @@ public class SelectManaer : MonoBehaviour, IListener
         Debug.Log("HealthChange");
     }
 
-}
+}*/

@@ -60,11 +60,19 @@ namespace Pump.HiddenObjects
         #region * Unity Pipeline
         private void Awake()
         {
-            DontDestroyOnLoad(this);
+            if (instance == null)
+            {
+                instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+                DestroyImmediate(this);
         }
 
         private void Start()
         {
+
+
             this.gameStatus.Load();
 
             this.uiControl = UIControl.Instance;
