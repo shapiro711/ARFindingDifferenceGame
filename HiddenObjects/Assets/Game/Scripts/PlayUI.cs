@@ -16,7 +16,7 @@ namespace Pump.HiddenObjects
         [SerializeField] private Button Settingbtn;
         [SerializeField] private Camera cam;
 
-        private bool isClear = false;
+        public bool isClear = false;
 
         private UIControl uiControl;
         private GameManager gameManager;
@@ -81,6 +81,18 @@ namespace Pump.HiddenObjects
         private int _health = 3;
         private int _correct_answer = 0;
 
+                private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+                DestroyImmediate(this);
+        }
+
+
 
         private void Start()
         {
@@ -89,6 +101,8 @@ namespace Pump.HiddenObjects
              EventManager.Instance.AddListener(EVENT_TYPE.TIME_CHANGE, this);
              EventManager.Instance.AddListener(EVENT_TYPE.HEALTH_CHANGE, this);
              EventManager.Instance.AddListener(EVENT_TYPE.CORRECT_ANSWER_CHANGE, this);
+
+
         }
 
 
