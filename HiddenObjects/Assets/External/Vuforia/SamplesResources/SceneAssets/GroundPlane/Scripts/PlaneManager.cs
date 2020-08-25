@@ -55,10 +55,9 @@ public class PlaneManager : MonoBehaviour
     {
         get
         {
-            return
-                (StatusCached == TrackableBehaviour.Status.TRACKED ||
-                 StatusCached == TrackableBehaviour.Status.EXTENDED_TRACKED) &&
-                StatusInfoCached == TrackableBehaviour.StatusInfo.NORMAL;
+            return (StatusCached == TrackableBehaviour.Status.TRACKED ||
+                    StatusCached == TrackableBehaviour.Status.EXTENDED_TRACKED) &&
+                    StatusInfoCached == TrackableBehaviour.StatusInfo.NORMAL;
         }
     }
 
@@ -68,11 +67,11 @@ public class PlaneManager : MonoBehaviour
         get
         {
             return
-                ((StatusCached == TrackableBehaviour.Status.TRACKED ||
-                 StatusCached == TrackableBehaviour.Status.EXTENDED_TRACKED) &&
-                 StatusInfoCached == TrackableBehaviour.StatusInfo.NORMAL) ||
-                (StatusCached == TrackableBehaviour.Status.LIMITED &&
-                 StatusInfoCached == TrackableBehaviour.StatusInfo.UNKNOWN);
+                ((StatusCached == TrackableBehaviour.Status.TRACKED || 
+                  StatusCached == TrackableBehaviour.Status.EXTENDED_TRACKED) && 
+                 StatusInfoCached == TrackableBehaviour.StatusInfo.NORMAL) || 
+                (StatusCached == TrackableBehaviour.Status.LIMITED && 
+                 StatusInfoCached == TrackableBehaviour.StatusInfo.UNKNOWN); 
         }
     }
 
@@ -87,10 +86,10 @@ public class PlaneManager : MonoBehaviour
         get
         {
             return
-                (TrackingStatusIsTrackedOrLimited &&
-                 GroundPlaneHitReceived &&
-                 (CurrentPlaneMode == PlaneMode.GROUND ||
-                    (CurrentPlaneMode == PlaneMode.PLACEMENT && Input.touchCount == 0)));
+                (TrackingStatusIsTrackedOrLimited && 
+                 GroundPlaneHitReceived && 
+                 (CurrentPlaneMode == PlaneMode.GROUND || 
+                  (CurrentPlaneMode == PlaneMode.PLACEMENT && Input.touchCount == 0)));
         }
     }
 
