@@ -6,6 +6,7 @@ namespace Pump.HiddenObjects
 {
     public class PlaneManager : MonoBehaviour
     {
+        /*
         private const string UnsupportedDeviceTitle = "Unsupported Device";
         private const string UnsupportedDeviceBody =
             "This device has failed to start the Positional Device Tracker. " +
@@ -168,6 +169,6 @@ namespace Pump.HiddenObjects
                 default:
                     break;
             }
-        }
+        */
     } 
 }
