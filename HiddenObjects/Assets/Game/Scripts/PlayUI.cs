@@ -18,8 +18,14 @@ namespace Pump.HiddenObjects
 
         public bool isClear = false;
 
+
+
+        private List<int> ScoreList = new List<int>();
+        private int BestScore = 100000;
+
         private UIControl uiControl;
         private GameManager gameManager;
+       
 
 
         private GameObject target;
@@ -59,6 +65,15 @@ namespace Pump.HiddenObjects
             }
         }
 
+        public int Score
+        {
+            get { return _score; }
+            set
+            {
+
+            }
+        }
+
 
         public int Health
         {
@@ -80,8 +95,9 @@ namespace Pump.HiddenObjects
         private float _timer = 100.0f;
         private int _health = 3;
         private int _correct_answer = 0;
+        private int _score = 0;
 
-                private void Awake()
+        private void Awake()
         {
             if (instance == null)
             {
@@ -112,8 +128,12 @@ namespace Pump.HiddenObjects
             if (Timebar.value > 0.0f)
             {
                 Timebar.value = Timer;
-                Timer -= Time.deltaTime*100;
+                Timer -= Time.deltaTime * 100;
+                //Timer += Time.deltaTime*100;
             }
+
+            Score += (int)Time.deltaTime;
+            
 
 
 
@@ -204,25 +224,30 @@ namespace Pump.HiddenObjects
 
         void OnClear(Component PlayUI, bool isClear)
         {
-           // Debug.Log("correct");
-          
+
             GameManager.instance.State = GameManager.GameState.Result;
             isClear = true;
+            isBestTime();
+            ScoreList.Add(Score);
+            ES3.Save("Scroe", ScoreList);       
+            ES3.Save("BestScore", BestScore);
         }
 
         void OnDead(Component PlayUI, bool isClear)
         {
 
-            Debug.Log(GameManager.instance.State);
             GameManager.instance.State = GameManager.GameState.Result;
             isClear = false;
             Debug.Log("죽었습니다");
             Debug.Log(GameManager.instance.State);
+            ScoreList.Add(Score);
+            ES3.Save("Scroe", ScoreList);
+            ES3.Save("BestScore", BestScore);
         }
 
         void OnCorrectChange(Component PlayUI, int NewHealth)
         {
-            //Debug.Log("correct");
+
         }
 
         void OnTimeChange(Component PlayUI, float NewTime)
@@ -232,11 +257,21 @@ namespace Pump.HiddenObjects
 
         void OnHealthChange(Component PlayUI, int NewHealth)
         {
-           // Debug.Log("HealthChange");
+
+        }
+
+        void isBestTime()
+        {
+            for (int i = 0; i < ScoreList.Count; i++)
+            {
+                if (ScoreList[i] < BestScore)
+                    ScoreList[i] = BestScore;
+            }
         }
 
         public void OnClickSetting()
         {
+            Time.timeScale = 0f;
             GameManager.instance.State = GameManager.GameState.Setting;
         }
     }

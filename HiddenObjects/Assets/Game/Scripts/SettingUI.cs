@@ -2,31 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-public class SettingUI : MonoBehaviour
+namespace Pump.HiddenObjects
 {
-    [SerializeField] Button Resumebtn;
-    [SerializeField] Button Exitbtn;
-
-    // Start is called before the first frame update
-    void Start()
+    public class SettingUI : Core.MonoSingleton<SettingUI>
     {
-        
-    }
+        [SerializeField] Button Resumebtn;
+        [SerializeField] Button Exitbtn;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        // Start is called before the first frame update
+        void Start()
+        {
 
-    private void onClickResume()
-    {
+        }
 
-    }
+        // Update is called once per frame
+        void Update()
+        {
 
-    private void onClickExit()
-    {
-        Application.Quit();
+        }
+
+        private void onClickResume()
+        {
+            GameManager.instance.State = GameManager.GameState.Play;
+            Time.timeScale = 1f;
+        }
+
+        private void onClickExit()
+        {
+            Application.Quit();
+        }
     }
 }

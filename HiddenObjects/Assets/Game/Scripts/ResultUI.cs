@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using Pump.Core;
 
 namespace Pump.HiddenObjects
@@ -12,12 +13,15 @@ namespace Pump.HiddenObjects
         [SerializeField] Button ReStartbtn;
         [SerializeField] Button NextStagebtn;
         [SerializeField] Text ClearText;
+        [SerializeField] Text Score;
 
 
         private void Start()
         {
             ReStartbtn.gameObject.SetActive(false);
             NextStagebtn.gameObject.SetActive(false);
+
+            Score.text = PlayUI.Instance.Score.ToString();
 
             if (PlayUI.Instance.isClear == false)
             {
@@ -41,6 +45,12 @@ namespace Pump.HiddenObjects
         public void OnClickNextStage()
         {
 
+        }
+
+        public void OnReStart()
+        {
+            GameManager.instance.State = GameManager.GameState.Play;
+            SceneManager.LoadScene("HiddenObects");
         }
 
     }
